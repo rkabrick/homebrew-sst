@@ -3,12 +3,10 @@ class Sst < Formula
   homepage "https://github.com/sstsimulator"
   url "https://github.com/sstsimulator/sst-core/releases/download/v13.0.0_Final/sstcore-13.0.0.tar.gz"
   version "13.0.0"
-  license "Custom: https://github.com/sstsimulator/sst-core/blob/devel/LICENSE.md"
 
   resource "sst-elements" do
     url "https://github.com/sstsimulator/sst-elements/releases/download/v13.0.0_Final/sstelements-13.0.0.tar.gz"
     version "13.0.0"
-    license "Custom: https://github.com/sstsimulator/sst-elements/blob/devel/LICENSE.md"
   end
 
   depends_on "autoconf" => :build
