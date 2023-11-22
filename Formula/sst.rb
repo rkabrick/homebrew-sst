@@ -1,21 +1,21 @@
 class Sst < Formula
   desc "Structural Simulation Toolkit (SST) Core and Elements"
   homepage "https://github.com/sstsimulator"
-  url "https://github.com/sstsimulator/sst-core/releases/download/v13.0.0_Final/sstcore-13.0.0.tar.gz"
-  version "13.0.0"
+  url "https://github.com/sstsimulator/sst-core/releases/download/v13.1.0_Final/sstcore-13.1.0.tar.gz"
+  version "13.1.0"
 
   resource "sst-elements" do
-    url "https://github.com/sstsimulator/sst-elements/releases/download/v13.0.0_Final/sstelements-13.0.0.tar.gz"
-    version "13.0.0"
+    url "https://github.com/sstsimulator/sst-elements/releases/download/v13.1.0_Final/sstelements-13.1.0.tar.gz"
+    version "13.1.0"
   end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
-  depends_on "python@3.11" 
+  depends_on "python@3.11"
 
   def install
-    ENV["PYTHON"] = Formula["python@3.11"].opt_bin/"python3" 
+    ENV["PYTHON"] = Formula["python@3.11"].opt_bin/"python3"
 
     system "./configure", "--enable-debug",
                           "--enable-profile",
@@ -36,7 +36,7 @@ class Sst < Formula
                             "--disable-silent-rules",
                             "--prefix=#{prefix}",
                             "--with-sst-core=#{prefix}"
-                            
+
       system "make", "-j"
       system "make", "install"
     end
