@@ -17,9 +17,6 @@ class Sst < Formula
   def install
     ENV["PYTHON"] = Formula["python@3.11"].opt_bin/"python3"
 
-    # Install sympy using pip
-    system ENV["PYTHON"], "-m", "pip", "install", "sympy"
-
     system "./configure", "--enable-debug",
                           "--enable-profile",
                           "--disable-mpi",
@@ -50,3 +47,4 @@ class Sst < Formula
     system "#{bin}/sst-info", "-q"
   end
 end
+
