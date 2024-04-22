@@ -15,7 +15,8 @@ class Sst < Formula
   depends_on "python@3.11"
 
   def install
-    ENV["PYTHON"] = Formula["python@3.11"].opt_bin/"python3"
+    ENV["PYTHON"] = Formula["python@3.11"].opt_bin/"python3.11"
+    ENV.prepend_path "PATH", Formula["python@3.11"].opt_bin
 
     system "./configure", "--enable-debug",
                           "--enable-profile",
@@ -23,7 +24,6 @@ class Sst < Formula
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}"
-
     system "make", "-j"
     system "make", "install"
 
@@ -36,7 +36,6 @@ class Sst < Formula
                             "--disable-silent-rules",
                             "--prefix=#{prefix}",
                             "--with-sst-core=#{prefix}"
-
       system "make", "-j"
       system "make", "install"
     end
@@ -47,4 +46,3 @@ class Sst < Formula
     system "#{bin}/sst-info", "-q"
   end
 end
-
