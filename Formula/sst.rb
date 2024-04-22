@@ -15,10 +15,8 @@ class Sst < Formula
   depends_on "python@3.11"
 
   def install
-    ENV["PYTHON"] = Formula["python@3.11"].opt_bin/"python3.11"
-    ENV.prepend_path "PATH", Formula["python@3.11"].opt_bin
-
-    system "./configure", "--enable-debug",
+    system "./configure", "PYTHON=#{Formula["python@3.11"].opt_bin}/python3.11",
+                          "--enable-debug",
                           "--enable-profile",
                           "--disable-mpi",
                           "--disable-dependency-tracking",
@@ -29,7 +27,8 @@ class Sst < Formula
 
     # Now install sst-elements
     resource("sst-elements").stage do
-      system "./configure", "--enable-debug",
+      system "./configure", "PYTHON=#{Formula["python@3.11"].opt_bin}/python3.11",
+                            "--enable-debug",
                             "--enable-profile",
                             "--disable-mpi",
                             "--disable-dependency-tracking",
