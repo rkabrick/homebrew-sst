@@ -12,10 +12,10 @@ class Sst < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
-  depends_on "python@3.11"
+  depends_on "python@3.10"
 
   def install
-    system "./configure", "PYTHON=#{Formula["python@3.11"].opt_bin}/python3.11",
+    system "./configure", "PYTHON=#{Formula["python@3.10"].opt_bin}/python3.10",
                           "--enable-debug",
                           "--enable-profile",
                           "--disable-mpi",
@@ -27,7 +27,7 @@ class Sst < Formula
 
     # Now install sst-elements
     resource("sst-elements").stage do
-      system "./configure", "PYTHON=#{Formula["python@3.11"].opt_bin}/python3.11",
+      system "./configure", "PYTHON=#{Formula["python@3.10"].opt_bin}/python3.10",
                             "--enable-debug",
                             "--enable-profile",
                             "--disable-mpi",
