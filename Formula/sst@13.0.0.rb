@@ -2,12 +2,10 @@ class SstAT1300 < Formula
   desc "Structural Simulation Toolkit (SST) Core and Elements"
   homepage "https://github.com/sstsimulator"
   url "https://github.com/sstsimulator/sst-core/releases/download/v13.0.0_Final/sstcore-13.0.0.tar.gz"
-  sha256 "<insert correct sha256 checksum>"
   version "13.0.0"
 
   resource "sst-elements" do
     url "https://github.com/sstsimulator/sst-elements/releases/download/v13.0.0_Final/sstelements-13.0.0.tar.gz"
-    sha256 "<insert correct sha256 checksum>"
     version "13.0.0"
   end
 
