@@ -1,4 +1,4 @@
-class SstAT1410 < Formula
+class Sst < Formula
   desc "Structural Simulation Toolkit (SST) Core and Elements"
   homepage "https://github.com/sstsimulator"
   url "https://github.com/sstsimulator/sst-core/releases/download/v14.1.0_Final/sstcore-14.1.0.tar.gz"
