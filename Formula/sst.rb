@@ -12,7 +12,7 @@ class Sst < Formula
   end
 
   resource "sst-elements" do
-    if head?
+    if ARGV.build_head?
       # For HEAD builds, clone via Git from the main branch.
       url "https://github.com/sstsimulator/sst-elements.git", using: :git, branch: "main"
     else
@@ -22,14 +22,14 @@ class Sst < Formula
     end
   end
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
-  depends_on "libtool"  => :build
-  depends_on "ncurses"  => :build
-  depends_on "python"   => :build
+  depends_on "autoconf"  => :build
+  depends_on "automake"  => :build
+  depends_on "libtool"   => :build
+  depends_on "ncurses"   => :build
+  depends_on "python"    => :build
 
   def install
-    # Run autogen.sh for HEAD builds (the stable tarball already has configure)
+    # Run autogen.sh for HEAD builds (stable tarballs already include configure)
     system "./autogen.sh" if build.head?
     system "./configure", "--enable-debug",
                           "--enable-profile",
