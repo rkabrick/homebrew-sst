@@ -2,21 +2,19 @@ class Sst < Formula
   desc "Structural Simulation Toolkit (SST) Core and Elements"
   homepage "https://github.com/sstsimulator"
 
-  # Stable tarball for sst-core
+  # Stable release tarball for sst-core
   url "https://github.com/sstsimulator/sst-core/releases/download/v14.1.0_Final/sstcore-14.1.0.tar.gz"
   version "14.1.0"
 
-  # HEAD build for sst-core: clone from the main branch
+  # HEAD build for sst-core: clone from master branch
   head do
-    url "https://github.com/sstsimulator/sst-core.git", branch: "main"
+    url "https://github.com/sstsimulator/sst-core.git", branch: "master"
   end
 
   resource "sst-elements" do
-    if ARGV.build_head?
-      # For HEAD builds, clone via Git from the main branch.
-      url "https://github.com/sstsimulator/sst-elements.git", using: :git, branch: "main"
+    if ARGV.include?("--HEAD")
+      url "https://github.com/sstsimulator/sst-elements.git", using: :git, branch: "master"
     else
-      # Stable tarball for sst-elements.
       url "https://github.com/sstsimulator/sst-elements/releases/download/v14.1.0_Final/sstelements-14.1.0.tar.gz"
       version "14.1.0"
     end
@@ -29,7 +27,6 @@ class Sst < Formula
   depends_on "python"    => :build
 
   def install
-    # Run autogen.sh for HEAD builds (stable tarballs already include configure)
     system "./autogen.sh" if build.head?
     system "./configure", "--enable-debug",
                           "--enable-profile",
@@ -41,7 +38,7 @@ class Sst < Formula
     system "make", "install"
 
     resource("sst-elements").stage do
-      system "./autogen.sh" if build.head?
+      system "./autogen.sh" if ARGV.include?("--HEAD")
       system "./configure", "--enable-debug",
                             "--enable-profile",
                             "--disable-mpi",
@@ -55,6 +52,7 @@ class Sst < Formula
   end
 
   test do
+    # Verify that the installed binary prints its version.
     assert_match version.to_s, shell_output("#{bin}/sst --version")
     system "#{bin}/sst-info", "-q"
   end
