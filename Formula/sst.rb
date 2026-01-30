@@ -15,7 +15,7 @@ class Sst < Formula
     if ARGV.include?("--HEAD")
       url "https://github.com/sstsimulator/sst-elements.git", using: :git, branch: "master"
     else
-      url "https://github.com/sstsimulator/sst-elements/releases/download/v15.1.1_Final/sstelements-15.1.1.tar.gz"
+      url "https://github.com/sstsimulator/sst-elements/releases/download/v15.1.0_Final/sstelements-15.1.0.tar.gz"
       version "15.1.1"
     end
   end
