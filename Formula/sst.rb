@@ -3,8 +3,8 @@ class Sst < Formula
   homepage "https://github.com/sstsimulator"
 
   # Stable release tarball for sst-core
-  url "https://github.com/sstsimulator/sst-core/releases/download/v15.1.1_Final/sstcore-15.1.1.tar.gz"
-  version "15.1.1"
+  url "https://github.com/sstsimulator/sst-core/releases/download/v16.0.0_Final/sstcore-16.0.0.tar.gz"
+  version "16.0.0"
 
   # HEAD build for sst-core: clone from master branch
   head do
@@ -15,8 +15,8 @@ class Sst < Formula
     if ARGV.include?("--HEAD")
       url "https://github.com/sstsimulator/sst-elements.git", using: :git, branch: "master"
     else
-      url "https://github.com/sstsimulator/sst-elements/releases/download/v15.1.0_Final/sstelements-15.1.0.tar.gz"
-      version "15.1.1"
+      url "https://github.com/sstsimulator/sst-elements/releases/download/v16.0.0_Final/sstelements-16.0.0.tar.gz"
+      version "16.0.0"
     end
   end
 
